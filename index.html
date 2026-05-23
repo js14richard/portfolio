@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Siril Richard | Backend / Full Stack Engineer</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:wght@300;700;900&family=DM+Sans:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --navy: #0d2244;
+            --rust: #c13b15;
+            --sand: #f0ede6;
+            --bg: #fafaf8;
+            --line: #e2dfd8;
+            --text: #111
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 32px;
+            background: rgba(250, 250, 248, .95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--line);
+            z-index: 1000
+        }
+
+        .brand {
+            font-family: 'Fraunces', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy)
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+            list-style: none
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--navy);
+            font-weight: 600
+        }
+
+        .hero {
+            padding-top: 72px;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            min-height: 100vh
+        }
+
+        .hero-left {
+            padding: 70px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+
+        .badge {
+            font-size: .75rem;
+            color: var(--rust);
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-transform: uppercase
+        }
+
+        h1 {
+            font-family: 'Fraunces', serif;
+            font-size: 5rem;
+            line-height: .95;
+            color: var(--navy);
+            margin: 20px 0
+        }
+
+        h1 em {
+            display: block;
+            color: var(--rust);
+            font-weight: 300;
+            font-style: italic
+        }
+
+        .role {
+            text-transform: uppercase;
+            font-size: .85rem;
+            color: #666;
+            letter-spacing: .08em
+        }
+
+        .bio {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 24px 0
+        }
+
+        .btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 6px;
+            font-weight: 700
+        }
+
+        .primary {
+            background: var(--navy);
+            color: #fff
+        }
+
+        .secondary {
+            border: 1px solid var(--line);
+            color: var(--navy)
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-top: 32px;
+            border: 1px solid var(--line);
+            background: #fff
+        }
+
+        .stat {
+            text-align: center;
+            padding: 20px
+        }
+
+        .stat b {
+            display: block;
+            font-family: 'Fraunces', serif;
+            font-size: 2.2rem;
+            color: var(--navy)
+        }
+
+        .hero-right,
+        .about-right {
+            background: var(--sand)
+        }
+
+        .hero-right img,
+        .about-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .divider {
+            height: 4px;
+            background: linear-gradient(90deg, var(--rust), var(--navy))
+        }
+
+        section {
+            padding: 80px 60px
+        }
+
+        h2 {
+            font-family: 'Fraunces', serif;
+            font-size: 3rem;
+            color: var(--navy);
+            margin-bottom: 30px
+        }
+
+        .skills {
+            background: var(--navy);
+            color: #fff
+        }
+
+        .skills h2 {
+            color: #fff
+        }
+
+        .skill-row {
+            background: rgba(255, 255, 255, .08);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 16px
+        }
+
+        .pill {
+            display: inline-block;
+            background: rgba(255, 255, 255, .15);
+            padding: 8px 12px;
+            border-radius: 999px;
+            margin: 5px
+        }
+
+        .exp-item {
+            padding: 24px 0;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .exp-item h3 {
+            color: var(--navy);
+            font-size: 1.5rem;
+            margin-bottom: 10px
+        }
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr .9fr;
+            padding: 0;
+            background: var(--sand)
+        }
+
+        .about-left {
+            padding: 70px
+        }
+
+        .award {
+            background: #fff;
+            padding: 16px;
+            border-left: 4px solid var(--rust);
+            margin-top: 16px;
+            border-radius: 6px
+        }
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px
+        }
+
+        .edu-card {
+            background: #fff;
+            border: 1px solid var(--line);
+            padding: 20px;
+            border-radius: 8px
+        }
+
+        footer {
+            background: #111;
+            color: #fff;
+            padding: 50px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 12px
+        }
+
+        @media(max-width:900px) {
+
+            .hero,
+            .about {
+                grid-template-columns: 1fr
+            }
+
+            h1 {
+                font-size: 3rem
+            }
+
+            .hero-left,
+            section,
+            .about-left {
+                padding: 30px
+            }
+
+            .nav-links {
+                display: none
+            }
+
+            .hero-right {
+                height: 60vh
+            }
+
+            .about-right {
+                height: 60vh
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="brand">Siril Richard</div>
+        <ul class="nav-links">
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    <section class="hero">
+        <div class="hero-left">
+            <div class="badge">Available for opportunities</div>
+            <h1>Siril Richard <em>Backend / Full Stack Engineer</em></h1>
+            <div class="role">Python • FastAPI • Node.js • React • AI / RAG</div>
+            <p class="bio">Backend-focused software engineer with 3+ years of experience building scalable APIs,
+                authentication systems, observability tooling, enterprise automation, and production-grade software
+                systems.</p>
+            <div class="btns">
+                <a class="btn primary" href="mailto:js14richard@gmail.com">Email Me</a>
+                <a class="btn secondary" href="https://www.linkedin.com/in/siril14richard/" target="_blank">LinkedIn</a>
+            </div>
+            <div class="stats">
+                <div class="stat"><b>3+</b>Years</div>
+                <div class="stat"><b>3.4B</b>Emails</div>
+                <div class="stat"><b>2×</b>Awards</div>
+            </div>
+        </div>
+        <div class="hero-right"><img src="images/professional.jpg" alt="Professional Photo"></div>
+    </section>
+    <div class="divider"></div>
+    <section id="skills" class="skills">
+        <h2>Technical Skills</h2>
+        <div class="skill-row"><strong>Backend:</strong><br><span class="pill">Python</span><span
+                class="pill">FastAPI</span><span class="pill">Node.js</span><span class="pill">Express</span><span
+                class="pill">REST APIs</span><span class="pill">OAuth2</span></div>
+        <div class="skill-row"><strong>Frontend:</strong><br><span class="pill">React</span><span
+                class="pill">JavaScript</span><span class="pill">TypeScript</span><span class="pill">HTML/CSS</span>
+        </div>
+        <div class="skill-row"><strong>Infra / Reliability:</strong><br><span class="pill">AWS SES</span><span
+                class="pill">Grafana</span><span class="pill">Datadog</span><span class="pill">PagerDuty</span><span
+                class="pill">Linux</span><span class="pill">Pytest</span></div>
+    </section>
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="exp-item">
+            <h3>Software Engineer — HCL Tech (Dropbox)</h3>
+            <p>Designed APIs enabling 3.4B+ email deliveries, passwordless account reactivation flows, one-click
+                unsubscribe compliance, analytics dashboards reducing retrieval time by 99%, and chatbot automations
+                handling high-scale workflows.</p>
+        </div>
+        <div class="exp-item">
+            <h3>Software Engineer Intern — HCL Tech</h3>
+            <p>Built enterprise APIs, frontend features, testing workflows, and production monitoring integrations.</p>
+        </div>
+    </section>
+    <section id="about" class="about">
+        <div class="about-left">
+            <h2>About Me</h2>
+            <p>AWS Certified Cloud Practitioner and two-time HCL TooGood Award winner. Passionate about backend
+                engineering, scalable systems, automation, AI-powered applications, and developer tooling.</p>
+            <div class="award"><strong>HCL TooGood Award — 2023</strong><br>Recognized for distinguished engineering
+                performance.</div>
+            <div class="award"><strong>HCL TooGood Award — 2024</strong><br>Consecutive recognition for high-impact
+                contributions.</div>
+            <p style="margin-top:24px;"><strong>Profiles:</strong><br>
+                <a href="https://github.com/js14richard/">GitHub</a> •
+                <a href="https://leetcode.com/u/js14richard/">LeetCode</a> •
+                <a href="https://www.geeksforgeeks.org/user/js14richard/">GeeksforGeeks</a> •
+                <a href="https://www.linkedin.com/in/siril14richard/">LinkedIn</a>
+            </p>
+        </div>
+        <div class="about-right"><img src="images/casual.jpg" alt="Casual Photo"></div>
+    </section>
+    <section id="education">
+        <h2>Education & Certifications</h2>
+        <div class="edu-grid">
+            <div class="edu-card"><strong>BCA</strong><br>Amity University Online<br>CGPA 7.8</div>
+            <div class="edu-card"><strong>AWS Certified Cloud Practitioner</strong><br>Amazon Web Services</div>
+            <div class="edu-card"><strong>HCL TechBee Program</strong><br>IT Training</div>
+            <div class="edu-card"><strong>Diploma in Multimedia</strong><br>Bharathidasan University</div>
+        </div>
+    </section>
+    <footer id="contact">
+        <div>
+            <h2 style="color:#fff;font-size:2rem;margin-bottom:8px">Let's Connect</h2>
+            <p>js14richard@gmail.com • +91 8610395820<br>Villupuram, Tamil Nadu, India</p>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/siril14richard/">LinkedIn</a>
+            <a href="https://github.com/js14richard/">GitHub</a>
+            <a href="https://leetcode.com/u/js14richard/">LeetCode</a>
+            <a href="https://www.geeksforgeeks.org/user/js14richard/">GFG</a>
+        </div>
+    </footer>
+</body>
+
+</html>
