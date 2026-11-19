@@ -1,5 +1,4 @@
-
 User-agent: *
 Allow: /
 
-Sitemap: https://js14richard.github.io/portfolio/sitemap.xml
+Sitemap: https://sirilrichard.dev/sitemap.xml
